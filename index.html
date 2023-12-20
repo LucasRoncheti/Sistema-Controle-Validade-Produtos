@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/css/root.css">
     <link rel="stylesheet" href="./src/css/mainContainer.css">
+    <link rel="stylesheet" href="./src/css/containerList.css">
     <link rel="shortcut icon" href="./src/img/favico.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <title>SCV Oliveira Produtos Naturais </title>
 </head>
+
 <body>
     <header><img src="src/img/logo.png" alt="Logo Oliveira Produtos Naturais"></header>
 
     <main>
         <div class="mainContainer" id="mainContainer">
             <div class="containerButtons">
-                <span  class=" selected  labelButton"></span>
+                <span class=" selected  labelButton"></span>
                 <button class="selected">
                     <p>Lista Validade</p>
                     <i class="bi bi-list-ul"></i>
@@ -33,13 +36,53 @@
                     <i class="bi bi-box-arrow-right"></i>
                 </button>
 
-               
-                
+
+
             </div>
-            <div class="containerList"></div>
+
+
+            <div class="containerList">
+                <div class="searchBar">
+                    <h4>CONTROLE DE VALIDADE DOS PRODUTOS</h4>
+                    <div class="searchContainer">
+                        <div class="containerForm">
+                            <form class="formDate">
+                                <img src="" alt="">
+                                <input id="" title="de" type="date">
+                                <i class="bi bi-arrow-bar-right"></i>
+                                <img src="" alt="">
+                                <input title="até" type="date">
+                                <button  title="sendSearch" type="submit"><i class="bi bi-search"></i></button>
+                            </form>
+    
+                        </div>
+                     
+                        <div class="containerQuickSerach">
+
+                            <div  class=" green quickSearch">
+                                <p>2 MESES</p>
+                            </div>
+    
+                            <div class=" orange quickSearch">
+                                <p>1 MÊS</p>
+                            </div>
+    
+                            <div class=" red    quickSearch">
+                                <p>15 DIAS</p>
+                            </div>
+                        </div>
+                     
+
+                    </div>
+                </div>
+                <div>
+
+                </div>
+            </div>
         </div>
     </main>
 
     <footer></footer>
 </body>
+
 </html>
