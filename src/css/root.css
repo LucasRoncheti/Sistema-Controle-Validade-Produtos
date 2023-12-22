@@ -67,3 +67,25 @@ main{
 }
 
 
+.displayFlexColumn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+
+.displayFlexRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.OverflowAuto{
+    overflow: auto;
+}

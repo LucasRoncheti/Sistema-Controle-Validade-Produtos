@@ -1,0 +1,64 @@
+.containerBarCode{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+
+.barCodeImg{
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    mix-blend-mode: darken;
+    overflow:hidden;
+}
+
+
+
+
+.productsData{
+    width: 80%;
+    height: 140px;
+   
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+
+.inputBarCode{
+    width: 80%;
+    height: 30px;
+    font-size: 1.5em;
+}
+
+.productImageBarCode{
+    width: 120px;
+    height:120px;
+    border-radius: 10px;
+    border:solid 3px var(--cor01);
+    overflow:hidden;
+  }
+
+  .productDescriptions{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.4em;
+  }
+
+  .color{
+    width: 120px;
+    height: 120px;
+    background-color: var(--cor05);
+    border-radius: 10px;
+  }

@@ -9,12 +9,14 @@ var  positionSpan = 0
 var targetPosition = 0
 
 
+var teste = targetPosition / 10
+
 
 // get the span and takes it to the button position 
 let runToPosition = () => {
     if (positionSpan <= targetPosition) {
         span.style.left =(positionSpan )+ "px"
-        positionSpan ++
+        positionSpan ++ 
     
     }else if (positionSpan >= targetPosition) {
         span.style.left = (positionSpan - 1 ) + "px"
@@ -43,6 +45,7 @@ let selectedPage = (multiply) => {
     if (multiply === 1) {
         targetPosition = 0 
         runToPosition()
+      
     } else if (multiply === 2) {
         targetPosition = offsetSpan + spaceBetweenSpans * 1
         runToPosition()
