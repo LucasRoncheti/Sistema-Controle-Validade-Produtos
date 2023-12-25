@@ -54,7 +54,7 @@ let validade = () => {
 
 
 <div class="map">
-    <h1>MAPA</h1>
+    <img src="src/img/plantaBaixa.jpg" alt="PlantaBaixa">
 </div>
 <div class="containerInputsMap">
     <input step="10" class="inputRange" type="range">

@@ -3,61 +3,99 @@
 const span = document.getElementById('spanTogglePage');
 const mainContainerSpan = document.getElementById('mainContainerSpan');
 
+// receives the id of the last div that received the selected class
+var idPreviwDiv = expirationList
 
 
-var  positionSpan = 0
+var positionSpan = 0
+
 var targetPosition = 0
 
 
-var teste = targetPosition / 10
-
 
 // get the span and takes it to the button position 
-let runToPosition = () => {
+let runToPosition = (id) => {
+
     if (positionSpan <= targetPosition) {
-        span.style.left =(positionSpan )+ "px"
-        positionSpan ++ 
-    
-    }else if (positionSpan >= targetPosition) {
-        span.style.left = (positionSpan - 1 ) + "px"
+        span.style.left = (positionSpan) + "px"
+        positionSpan++
+
+    } else if (positionSpan >= targetPosition) {
+        span.style.left = (positionSpan - 1) + "px"
         positionSpan--
-        
+
     }
+
+
+
 }
 
-setInterval(runToPosition,1)
+setInterval(runToPosition, 1)
 
 
 //  select the objects and calculate where the span will be delivered
 
-let selectedPage = (multiply) => {
+let selectedPage = (numberIndex, id) => {
 
+
+    let idDiv = document.getElementById(id)
+
+
+    
+    let changeClass = () => {
+        if (idDiv.classList.contains("selected")) {
+            return
+        } else {
+            idDiv.classList.add("selected")
+            idDiv.classList.remove('red')
+            idPreviwDiv.classList.remove("selected")
+            idPreviwDiv.classList.add("red")
+        }
+    }
+
+
+    // calculate the sizes and positions for the span psrcorrer the div
 
     let offsetSpan = span.offsetWidth;
     let mainContainerWidth = mainContainerSpan.offsetWidth;
-    let mainContainerPosition = mainContainerSpan.getBoundingClientRect().left
-
     let spansWidth = offsetSpan * 4
     let sizeCalculated = mainContainerWidth - spansWidth
     let spaceBetweenSpans = sizeCalculated / 3
-   
 
-    if (multiply === 1) {
-        targetPosition = 0 
+
+    if (numberIndex === 1) {
+        targetPosition = 0
+
+        changeClass()
+        idPreviwDiv = idDiv
         runToPosition()
-      
-    } else if (multiply === 2) {
+
+    } else if (numberIndex === 2) {
         targetPosition = offsetSpan + spaceBetweenSpans * 1
+
+        changeClass()
+        idPreviwDiv = idDiv
         runToPosition()
-    } else if (multiply === 3) {
+
+    } else if (numberIndex === 3) {
         targetPosition = (offsetSpan * 2) + spaceBetweenSpans * 2
+   
+        changeClass()
+        idPreviwDiv = idDiv
         runToPosition()
+
     } else {
         targetPosition = (offsetSpan * 3) + spaceBetweenSpans * 3
+       
+        changeClass()
+        idPreviwDiv = idDiv
         runToPosition()
+
     }
-   
+
 }
+
+
 
 
 

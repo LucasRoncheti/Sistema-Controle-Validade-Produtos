@@ -82,7 +82,7 @@
     width:35px;
     height: 35px;
     border-radius: 3px;
-    border: solid 3px var(--cor01);
+    border: solid 2px var(--cor01);
 }
 .imgItemSave img{
     width: 100%;

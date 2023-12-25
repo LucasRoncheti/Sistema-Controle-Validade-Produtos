@@ -163,9 +163,14 @@
   /*warning*/
   .map{
     width: 96%;
-    height:500px;/* alterar para auto antes da produção */
-    background-color: red;
+    height:auto;/* alterar para auto antes da produção */
+    
     margin:  auto;
+  }
+
+  .map img{
+    width: 100%;
+   height: auto;
   }
 
   .containerInputsMap{
