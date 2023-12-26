@@ -5,16 +5,18 @@ let produtos = () => {
     
    
     <div class="containerSaveProducts">
-        <div class="productImage">
-            <img style="width: 100%;" src="src/img/favico.png" alt="">
+        <div onclick="getImage()"  class="productImage">
+            <img id="thumbnail" style="width: 100%;" src="src/img/favico.png" alt="">
         </div>
-        <div class="formProducts">
+        <form id="formProducts" class="formProducts">
+            <input type="file" value="" accept="image/*" capture="environment" id="cameraInput" style="display:none;">
+
             <label for="product">Nome do Produto</label>
-            <input name="product" type="text">
+            <input id="product" name="product" type="text">
             <label for="id">ID Produto</label>
-            <input name="id" type="number">
-        </div>
-        <button class=" green saveProductButton">
+            <input id="productId" name="id" type="number">
+        </form>
+        <button onclick="registerProduct()" class=" green saveProductButton">
             <i class="bi bi-floppy2-fill"></i>
         </button>
     </div>
