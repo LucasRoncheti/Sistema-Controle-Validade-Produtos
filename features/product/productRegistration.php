@@ -8,6 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $productId = $_POST['productId'];
 
     $uploadDirectory = '../../src/uploads/';
+    $downloaddirectory  = './src/uploads/';
+
     if (!file_exists($uploadDirectory)) {
         mkdir($uploadDirectory, 0777, true);
     }
@@ -22,11 +24,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $newFileName = $productName . '_' . time() . '.' . $originalExtension;
 
         $targetFile = $uploadDirectory . $newFileName;
+        $targetDownloadDirectory = $downloaddirectory . $newFileName;
 
         if (move_uploaded_file($tempFile, $targetFile)) {
             
             $stmt = $conn->prepare('INSERT INTO produto (nome, numeroId, img) VALUES (?,?,?)');
-            $stmt->bind_param('sis', $productName, $productId, $targetFile);
+            $stmt->bind_param('sis', $productName, $productId, $targetDownloadDirectory);
             $stmt->execute();
 
             if ($stmt->affected_rows > 0) {

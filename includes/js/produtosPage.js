@@ -6,7 +6,7 @@ let produtos = () => {
    
     <div class="containerSaveProducts">
         <div onclick="getImage()"  class="productImage">
-            <img id="thumbnail" style="width: 100%;" src="src/img/favico.png" alt="">
+            <img id="thumbnail" style="width: 100%;" src="src/img/cameraicon.png" alt="">
         </div>
         <form id="formProducts" class="formProducts">
             <input type="file" value="" accept="image/*" capture="environment" id="cameraInput" style="display:none;">
@@ -28,20 +28,11 @@ let produtos = () => {
 
     <ul id="containerItensSave" class="containerItensSave">
 
-        <li class="itemSave">
-            <div class="imgItemSave">
-                <img src="src/img/favico.png" alt="">
-            </div>
-            <p class="productPSave">Óleo de coco</p>
-            <p class="IdProductSave">000000001</p>
-            <div class="tagColorSave">
-                <i  class="bi bi-pencil-fill"></i>
-                <i class="bi bi-trash-fill"></i>
-            </div>
-        </li>
+     
                     
     </ul>
 
 
 `
+listProducts()
 }
