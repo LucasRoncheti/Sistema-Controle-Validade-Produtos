@@ -1,9 +1,12 @@
-let list = document.getElementById('containerListExpiraionDate');
+
 
 
 let conditional = true;
 
 let openList = () => {
+
+    let list = document.getElementById('containerListExpiraionDate');
+    
     if (conditional) {
         list.classList.add('animationOpen');
         list.classList.remove('animationClose');

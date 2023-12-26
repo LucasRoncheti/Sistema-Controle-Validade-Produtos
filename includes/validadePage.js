@@ -75,6 +75,7 @@ let validade = () => {
         </select>
     </div>
 </div>
+
 <button onclick="openList()" class="displayFlexColumn OpenList ">
     <i class="bi bi-card-checklist"></i>
 </button>
@@ -107,6 +108,13 @@ let validade = () => {
     </ul>
 
 </div>
+
+
+
+
     `
     
 }
+
+
+
