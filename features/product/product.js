@@ -1,3 +1,4 @@
+let cond = false // to update or registration
 
 // resize the image to put into thumbnail
 let getImage = () => {
@@ -12,8 +13,8 @@ let getImage = () => {
         }
 
         const maxWidth1 = 900;
-  
-          var reader = new FileReader();
+
+        var reader = new FileReader();
 
         reader.onload = function (e) {
             var img = new Image();
@@ -53,8 +54,6 @@ let getImage = () => {
 let registerProduct = () => {
     let productName = document.getElementById('product').value;
     let productId = document.getElementById('productId').value;
-
-
     let imgElement = document.getElementById('thumbnail');
 
 
@@ -81,24 +80,24 @@ let registerProduct = () => {
 
     ctx.drawImage(imgElement, 0, 0, newWidth, newHeight);
 
-    if(productName  === ""){
+    if (productName === "") {
         alert('Preencha o nome do produto !')
         return
-    }else if (productId === ""){
-        alert('Preencha o ID do produto !')  
+    } else if (productId === "") {
+        alert('Preencha o ID do produto !')
         return
-    }else{
+    } else {
         canvas.toBlob(function (blob) {
             let productForm = document.getElementById('formProducts');
-    
-    
+
+
             let formData = new FormData();
             formData.append('productName', productName);
             formData.append('productId', productId);
             formData.append('image', blob, 'image.jpg');
-    
-            
-    
+
+
+
             fetch('./features/product/productRegistration.php', {
                 method: 'POST',
                 body: formData
@@ -114,9 +113,9 @@ let registerProduct = () => {
                     console.error('Erro ao registrar o produto:', error);
                 });
         }, 'image/jpeg', 0.4);
-    
+
     }
-    
+
 }
 
 // list products in the product page 
@@ -139,21 +138,19 @@ async function listProducts() {
     } catch (error) {
 
 
-        alert("Erro na requisição",error)
+        alert("Erro na requisição", error)
 
     }
 
 }
 
-
-
 //delete products 
-function deleteProducts(productId,pathImag) {
+let deleteProducts = (productId, pathImag) => {
 
-   
+
 
     pathCorreto = "../." + pathImag
-    console.log(pathCorreto)
+
 
     if (confirm("Tem certeza que deseja excluir este produto?")) {
         fetch('./features/product/deleteProduct.php', {
@@ -163,22 +160,126 @@ function deleteProducts(productId,pathImag) {
             },
             body: JSON.stringify({
                 id: productId,
-                image:pathCorreto
+                image: pathCorreto
             }),
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                
-                console.log('Produto excluído com sucesso!');
-                listProducts()
-            
-            } else {
-                console.error('Erro ao excluir o produto:', data.error);
-            }
-        })
-        .catch(error => {
-            console.error('Erro na solicitação fetch:', error);
-        });
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+
+                    console.log('Produto excluído com sucesso!');
+                    listProducts()
+
+                } else {
+                    console.error('Erro ao excluir o produto:', data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Erro na solicitação fetch:', error);
+            });
+    }
+}
+
+let colectData = (id) => {
+
+    // data from product listed  in the ul 
+    let thumbnailList = document.getElementById('thumbnailList' + id).src
+    let nameList = document.getElementById('nameList' + id).textContent
+    let idList = document.getElementById('idList' + id).textContent
+
+    // inputs from update
+    let productName = document.getElementById('product');
+    productName.value = nameList
+
+    let productId = document.getElementById('productId');
+    productId.value = idList
+
+    let imgElement = document.getElementById('thumbnail');
+    imgElement.src = thumbnailList
+
+
+    let inputId = document.getElementById('inputIdDataBase');
+    inputId.value = id
+
+    cond = true
+
+
+}
+
+let updateProduct = () => {
+
+    let productName = document.getElementById('product').value;
+    let productId = document.getElementById('productId').value;
+    let imgElement = document.getElementById('thumbnail');
+    let inputId = document.getElementById('inputIdDataBase').value
+
+    let canvas = document.createElement('canvas');
+    let ctx = canvas.getContext('2d');
+
+
+    const maxWidth = 900;
+    const maxHeight = 900;
+
+
+    let newWidth, newHeight;
+    if (imgElement.width > imgElement.height) {
+        newWidth = maxWidth;
+        newHeight = (maxWidth / imgElement.width) * imgElement.height;
+    } else {
+        newWidth = (maxHeight / imgElement.height) * imgElement.width;
+        newHeight = maxHeight;
+    }
+
+    canvas.width = newWidth;
+    canvas.height = newHeight;
+
+
+    ctx.drawImage(imgElement, 0, 0, newWidth, newHeight);
+
+    if (productName === "") {
+        alert('Preencha o nome do produto !')
+        return
+    } else if (productId === "") {
+        alert('Preencha o ID do produto !')
+        return
+    } else {
+        canvas.toBlob(function (blob) {
+            let productForm = document.getElementById('formProducts');
+
+
+            let formData = new FormData();
+            formData.append('productName', productName);
+            formData.append('productId', productId);
+            formData.append('image', blob, 'image.jpg');
+            formData.append('id', inputId,);
+
+
+
+            fetch('./features/product/productUpdate.php', {
+                method: 'POST',
+                body: formData
+            })
+                .then((response) => response.text())
+                .then(data => {
+                    alert(data);
+                    productForm.reset();
+                    document.getElementById('thumbnail').src = "src/img/cameraicon.png";
+                    listProducts()
+                    cond = false
+                })
+                .catch(error => {
+                    console.error('Erro ao registrar o produto:', error);
+                });
+        }, 'image/jpeg', 0.4);
+
+    }
+
+}
+
+let Register_OR_Update = () => {
+    if (!cond) {
+        registerProduct()
+    } else {
+        updateProduct()
     }
 }

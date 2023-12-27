@@ -10,13 +10,13 @@ let produtos = () => {
         </div>
         <form id="formProducts" class="formProducts">
             <input type="file" value="" accept="image/*" capture="environment" id="cameraInput" style="display:none;">
-
+            <input id="inputIdDataBase" type="hidden" value="">
             <label for="product">Nome do Produto</label>
             <input id="product" name="product" type="text">
             <label for="id">ID Produto</label>
             <input id="productId" name="id" type="number">
         </form>
-        <button onclick="registerProduct()" class=" green saveProductButton">
+        <button onclick="Register_OR_Update()" class=" green saveProductButton">
             <i class="bi bi-floppy2-fill"></i>
         </button>
     </div>

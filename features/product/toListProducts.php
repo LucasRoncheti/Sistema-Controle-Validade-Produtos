@@ -11,12 +11,12 @@ try {
             while ($row_sql = mysqli_fetch_assoc($result)) {
            echo    ' <li class="itemSave">';
            echo    '    <div class="imgItemSave">';
-           echo    '       <img src="'. $row_sql['img'] .'" alt="thumbnail">';
+           echo    '       <img id="thumbnailList'.$row_sql["id"].'" src="'. $row_sql['img'] .'" alt="thumbnail">';
            echo    '   </div>';
-           echo    '   <p class="productPSave">'.$row_sql["nome"].'</p>';
-           echo    '   <p class="IdProductSave">'.$row_sql["numeroId"].'</p>';
+           echo    '   <p id="nameList'.$row_sql["id"].'" class="productPSave">'.$row_sql["nome"].'</p>';
+           echo    '   <p  id="idList'.$row_sql["id"].'" class="IdProductSave">'.$row_sql["numeroId"].'</p>';
            echo    '   <div class="tagColorSave">';
-           echo    '         <i class="bi bi-pencil-fill"></i>';
+           echo    '         <i onclick="colectData(\''.$row_sql["id"].'\')" class="bi bi-pencil-fill"></i>';
            echo    '        <i onclick= "deleteProducts(\''.$row_sql["id"].'\',\''.$row_sql["img"].'\')"  class="bi bi-trash-fill"></i>';
            echo    '     </div>';
            echo    ' </li>';
