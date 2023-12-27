@@ -6,21 +6,21 @@ let validade = () => {
     mainContainer.innerHTML = `
     
     <div class="containerSaveProductsExpiration">
-    <div class="productImageExpiration">
-        <img style="width: 100%;" src="src/img/favico.png" alt="">
+    <div id="productImageExpiration" class="productImageExpiration">
+        <img id="imgProductExpiration" style="width: 100%;" src="src/img/favico.png" alt="">
     </div>
 
-    <div class="containerForms">
+    <form id="formExpirationDate" class="containerForms">
         <div class=" formProductsExpirationNameProduct">
 
             <div class="productForm">
                 <label for="product">Nome do Produto</label>
-                <input name="product" type="text">
+                <input id="productExpiration" name="product" type="text">
             </div>
 
             <div class=" isExpirationForm">
                 <label for="idValidade">ID validade</label>
-                <input name="idValidade" type="text">
+                <input id="idProductExpiration" name="idValidade" type="text">
             </div>
 
 
@@ -31,21 +31,21 @@ let validade = () => {
 
             <div class="containerInputs">
                 <label for="buyDate">Data Compra</label>
-                <input name="buyDate" type="date">
+                <input id="buyDate" name="buyDate" type="date">
             </div>
 
             <div class="containerInputs">
                 <label for="expirationDate">Data Vallidade</label>
-                <input name="expirationDate" type="date">
+                <input id="expirationDate" name="expirationDate" type="date">
             </div>
 
             <div class="containerInputs">
                 <label for="amount">Quantidade</label>
-                <input name="amount" type="number">
+                <input id="amount" name="amount" type="number">
             </div>
 
         </div>
-    </div>
+    </form>
 
     <button class=" green saveProductButtonExpiration">
         <i class="bi bi-floppy2-fill"></i>
@@ -89,7 +89,7 @@ let validade = () => {
 
     <div class="containerSearchBarSave">
         <div class=" green SearchIcon"><i class="bi bi-search"></i></div>
-        <input class="searchBarProducts" type="text">
+        <input id="searchBarProducts" class="searchBarProducts" type="text">
     </div>
 
 
@@ -100,7 +100,7 @@ let validade = () => {
             <div class="imgItem">
                 <img src="src/img/favico.png" alt="">
             </div>
-            <p class="productP">Óleo de coco</p>
+            <p class="productP">Óleo dada de coco</p>
             <p class="dateP">12/12/23</p>
             <div class=" green tagColor"></div>
         </li>
@@ -113,7 +113,28 @@ let validade = () => {
 
 
     `
-    
+    listProductsValidadePage()
+
+    let searchBar = document.getElementById('searchBarProducts');
+
+    searchBar.addEventListener('input', () => {
+
+        fetch('./features/expirationDate/searchProduct.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'searchBar=' + encodeURIComponent(searchBar.value),
+        })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('containerItens').innerHTML = data
+
+            })
+            .catch(error => {
+                alert(error.message);
+            });
+    })
 }
 
 

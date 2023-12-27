@@ -89,3 +89,12 @@ main{
 .OverflowAuto{
     overflow: auto;
 }
+
+.cursorPointer{
+    cursor: pointer;
+}
+
+.cursorPointer:hover{
+    background-color: var(--cor05);
+    transition: 1s;
+}

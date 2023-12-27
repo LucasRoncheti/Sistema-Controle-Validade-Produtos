@@ -43,6 +43,7 @@
   padding: 3px;
   height: 25px;
   border:none;
+  text-transform: uppercase;
 }
 
 .saveProductButton{
@@ -76,6 +77,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 7px;
 }
 
 .imgItemSave{
@@ -141,4 +143,5 @@
   height: 35px;
   border: none;
   border-radius: 0px 5px 5px 0px;
+  text-transform: uppercase;
 }
