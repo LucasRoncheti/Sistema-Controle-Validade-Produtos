@@ -7,7 +7,7 @@ let saidaProdutos = () => {
 
     <div class="containerBarCode">
         <img class="barCodeImg" src="./src/img/barCode.gif" alt="">
-        <input id="inputBarCode" class="inputBarCode" type="text">
+        <input  id="inputBarCode" class="inputBarCode" type="text">
 
         <div class="productsData">
                 <div class=" productImageSell">

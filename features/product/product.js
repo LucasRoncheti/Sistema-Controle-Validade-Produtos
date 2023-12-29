@@ -248,10 +248,10 @@ let updateProduct = () => {
 
 
             let formData = new FormData();
-            formData.append('productName', productName);
-            formData.append('productId', productId);
-            formData.append('image', blob, 'image.jpg');
-            formData.append('id', inputId,);
+            formData.append('productName', productName)
+            formData.append('productId', productId)
+            formData.append('image', blob, 'image.jpg')
+            formData.append('id', inputId,)
 
 
 

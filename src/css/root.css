@@ -98,3 +98,11 @@ main{
     background-color: var(--cor05);
     transition: 1s;
 }
+
+.displayBlock{
+    display: block;
+}
+
+.displayNone{
+    display: none;
+}

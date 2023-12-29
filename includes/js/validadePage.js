@@ -47,17 +47,17 @@ let validade = () => {
         </div>
     </form>
 
-    <button class=" green saveProductButtonExpiration">
+    <button onclick="registerExpirationDate()" class=" green saveProductButtonExpiration">
         <i class="bi bi-floppy2-fill"></i>
     </button>
 </div>
 
 
 <div class="map">
-    <img src="src/img/plantaBaixa.jpg" alt="PlantaBaixa">
+    <img  id="map"  src="src/img/plantaBaixa.jpg" alt="PlantaBaixa">
 </div>
 <div class="containerInputsMap">
-    <input step="10" class="inputRange" type="range">
+    <input id="inputRange" step="10" class="inputRange" type="range">
 
     <div class="containerSelect">
         <i class="bi bi-list-nested"></i>
@@ -135,6 +135,8 @@ let validade = () => {
                 alert(error.message);
             });
     })
+
+
 }
 
 

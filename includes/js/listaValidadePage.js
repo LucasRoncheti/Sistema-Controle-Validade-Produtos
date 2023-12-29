@@ -40,22 +40,50 @@ var listaValidade = () => {
                 </div>
                 <ul id="containerItens" class="containerItens">
 
-                    <li class="item">
-                        <div class="imgItem">
-                            <img src="src/img/favico.png" alt="">
-                        </div>
-                        <p class="productP">Óleo de coco</p>
-                        <p class="dateP">12/12/23</p>
-                        <div class=" green tagColor"></div>
-                    </li>
+                
 
                 </ul>
 
 
+                <div id="containerInfoProducts" class=" displayNone containerInfoProducts">
+                   
+                </div>
+
 
     `
+    listProductsListaValidadePage()
+    console.log('chamndo lista ')
+}
+
+listaValidade()
+
+
+
+
+// this function shows the popUp with the map and data of the selected product
+
+
+
+let popUpInfoProducts = (buyDate,selectFloor,inputRange,srcmapa) => {
+
+    const containerMap =  $('#containerInfoProducts')
+    containerMap.html(`
+        <span onclick="popUpInfoProductsClose()" class="span"><i class="bi bi-x-circle"></i></span>
+        <p> Data Compra: ${buyDate} </p>
+        <p> Posição no mapa:${inputRange} </p>
+        <p> Posição na prateleira:${selectFloor} </p>
+        <img src="${srcmapa}"> 
+   
+   `)
+   containerMap.removeClass('displayNone')
+ 
+}   
+
+
+let popUpInfoProductsClose = ()=>{
+    
+    const containerMap =  $('#containerInfoProducts')
+    containerMap.addClass('displayNone')
 }
 
 
-
-listaValidade()
