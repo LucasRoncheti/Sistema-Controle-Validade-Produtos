@@ -8,8 +8,12 @@ try {
 
     if ($result) {
         if ($result->num_rows > 0) {
+
             while ($row = mysqli_fetch_assoc($result)) {
 
+                
+            if($row['quantidade'] > 0){
+                
             $convertedDate = date('d/m/Y', strtotime($row['datavalidade']));
             $dataCompra = date('d/m/Y', strtotime($row['datacompra']));
                 
@@ -24,6 +28,7 @@ try {
             echo '        <div class=" green tagColor"></div>';
             echo '    </li>';
             }
+        }
         } else {
             echo '<p style ="text-align:center;">Nenhum resultado encontrado</p>';
         }

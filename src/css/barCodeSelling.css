@@ -37,6 +37,8 @@
     height: 30px;
     font-size: 1.5em;
     text-align: center;
+    border: solid 3px black;
+    border-radius: 5px;
 }
 
 .productImageBarCode{
@@ -62,4 +64,14 @@
     height: 120px;
     background-color: var(--cor05);
     border-radius: 10px;
+  }
+
+
+  #formDecreaseAmount{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
   }

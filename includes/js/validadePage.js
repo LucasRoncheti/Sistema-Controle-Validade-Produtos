@@ -20,7 +20,7 @@ let validade = () => {
 
             <div class=" isExpirationForm">
                 <label for="idValidade">ID validade</label>
-                <input id="idProductExpiration" name="idValidade" type="text">
+                <input id="idProductExpiration" name="idValidade" type="number">
             </div>
 
 
@@ -41,7 +41,7 @@ let validade = () => {
 
             <div class="containerInputs">
                 <label for="amount">Quantidade</label>
-                <input id="amount" name="amount" type="number">
+                <input  value="1" id="amount" name="amount" type="number">
             </div>
 
         </div>
@@ -113,7 +113,10 @@ let validade = () => {
 
 
     `
-    listProductsValidadePage()
+    
+
+
+   // get the id number and compare it with the id number in the database, after returning with the server response
 
     let searchBar = document.getElementById('searchBarProducts');
 
@@ -135,7 +138,8 @@ let validade = () => {
                 alert(error.message);
             });
     })
-
+    
+    listProductsValidadePage()
 
 }
 

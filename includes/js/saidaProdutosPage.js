@@ -7,22 +7,84 @@ let saidaProdutos = () => {
 
     <div class="containerBarCode">
         <img class="barCodeImg" src="./src/img/barCode.gif" alt="">
-        <input  id="inputBarCode" class="inputBarCode" type="text">
 
-        <div class="productsData">
-                <div class=" productImageSell">
-                    <img class=" productImageBarCode" src="./src/img/favico.png" alt="">
-                </div>
-                <div class="productDescriptions">
-                    <p>Produto:Nome do Produto</p>
-                    <p>Data Validade: 12/12/23</p>
-                    <p>Quantidade disponível: 01 </p>
-                </div>
-                <div class="color">
+        <form  id="formDecreaseAmount" action="submit">
+            <input  id="inputBarCode" class="inputBarCode" type="text">
+            <button style="display:none;" type="submit">teste </button>
+        </form>
 
-                </div>
+        <div id="productsData" class="productsData">
+
+
         </div>
     </div>
     
     `
+
+
+    // mantain the input in focus aways 
+
+    let input = document.getElementById('inputBarCode');
+
+    let inputCodeBar = () => {
+        if (input) {
+
+            document.addEventListener('DOMContentLoaded', function () {
+                input.focus()
+            })
+
+
+            document.addEventListener('click', function (event) {
+                const clicouNoInput = event.target === input;
+
+
+                if (!clicouNoInput) {
+                    input.focus();
+                }
+            })
+        } else {
+
+        }
+    }
+
+    inputCodeBar()
+
+
+
+    // Decrease the amout of the products expiration Date 
+
+    let form = document.getElementById('formDecreaseAmount')
+
+
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        let inputBarCode = document.getElementById('inputBarCode').value
+        const formData = new FormData(this);
+        formData.append('inputBarCode', inputBarCode)
+
+
+
+
+        fetch('./features/expirationDate/decreaseAmout.php', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(data => {
+
+                document.getElementById('productsData').innerHTML = data
+                setTimeout(() => {
+                    form.reset()
+                }, 2000)
+
+            })
+            .catch(error => {
+                console.error('Erro:', error.message)
+            });
+    });
 }
+
+
+

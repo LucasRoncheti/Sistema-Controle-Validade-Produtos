@@ -37,7 +37,15 @@ var listaValidade = () => {
                      
 
                     </div>
+
+            
                 </div>
+
+                <div  class="containerSearchBarSave containerSearchBarSaveListaValidade">
+                    <div class=" green SearchIcon"><i class="bi bi-search"></i></div>
+                    <input id="searchBarProducts" class="searchBarProducts" type="text">
+                </div>
+            
                 <ul id="containerItens" class="containerItens">
 
                 
@@ -57,6 +65,28 @@ var listaValidade = () => {
 
 listaValidade()
 
+
+
+let searchBar = document.getElementById('searchBarProducts');
+
+searchBar.addEventListener('input', () => {
+
+    fetch('./features/expirationDate/searchProductListaValidade.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'searchBar=' + encodeURIComponent(searchBar.value),
+    })
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('containerItens').innerHTML = data
+
+        })
+        .catch(error => {
+            alert(error.message);
+        });
+})
 
 
 
@@ -81,7 +111,7 @@ let popUpInfoProducts = (buyDate,selectFloor,inputRange,srcmapa) => {
 
 
 let popUpInfoProductsClose = ()=>{
-    
+
     const containerMap =  $('#containerInfoProducts')
     containerMap.addClass('displayNone')
 }

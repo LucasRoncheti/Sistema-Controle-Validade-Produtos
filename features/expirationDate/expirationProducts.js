@@ -56,9 +56,11 @@ async function listProductsValidadePage() {
 }
 
 
+//selects the list of products to a list of products with validity
+
 let selectProduct = (id, img, name) => {
 
-    let  imgProductExpiration =  $('#imgProductExpiration')
+    let imgProductExpiration = $('#imgProductExpiration')
     let productExpiration = $('#productExpiration')
     imgProductExpiration.attr('src', img)
     productExpiration.val(name)
@@ -78,39 +80,42 @@ let registerExpirationDate = () => {
     let inputRange = $('#inputRange').val()
     let imageMap = $('#map').attr('src')
 
-    console.log(
-        productImageExpiration,
-        productExpiration,
-        idProductExpiration,
-        buyDate,
-        expirationDate,
-        amount,
-        selectFloor,
-        inputRange,
-        imageMap
-    )
 
-   let  formData = new FormData()
-    formData.append('productImageExpiration',productImageExpiration) 
-    formData.append('productExpiration',productExpiration) 
-    formData.append('idProductExpiration',idProductExpiration) 
-    formData.append('buyDate',buyDate) 
-    formData.append('expirationDate',expirationDate) 
-    formData.append('amount',amount) 
-    formData.append('selectFloor',selectFloor) 
-    formData.append('inputRange',inputRange) 
-    formData.append('imageMap',imageMap) 
-    
-    fetch('./features/expirationDate/expirationDateRegistration.php',{
-        method: 'POST',
-        body: formData
-    })
-    .then((response => response.text()))
-    .then(data=>{
-        alert(data)
-    })
-    .catch(error=>{
-        console.log('Erro ao salvar', error)
-    })
+    if (productExpiration === "" || idProductExpiration === "" || buyDate === "" || expirationDate === "" || amount === "" || selectFloor === "" || inputRange === 0) {
+        alert('Preencha todos os campos!')
+    } else {
+
+        let formData = new FormData()
+        formData.append('productImageExpiration', productImageExpiration)
+        formData.append('productExpiration', productExpiration)
+        formData.append('idProductExpiration', idProductExpiration)
+        formData.append('buyDate', buyDate)
+        formData.append('expirationDate', expirationDate)
+        formData.append('amount', amount)
+        formData.append('selectFloor', selectFloor)
+        formData.append('inputRange', inputRange)
+        formData.append('imageMap', imageMap)
+
+        fetch('./features/expirationDate/expirationDateRegistration.php', {
+            method: 'POST',
+            body: formData
+        })
+            .then((response => response.text()))
+            .then(data => {
+                alert(data)
+                validade()
+
+
+
+            })
+            .catch(error => {
+                alert('Erro ao salvar', error)
+            })
+
+    }
+
 
 }
+
+
+

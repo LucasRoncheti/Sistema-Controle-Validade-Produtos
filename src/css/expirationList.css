@@ -94,12 +94,8 @@
 .containerItens {
     width: 95%;
     height: 100%;
-
-    margin: 85px auto 5px auto;
+    margin: 127px auto 5px auto;
     list-style: none;
-    
-
-
 }
 
 .item {
@@ -212,4 +208,9 @@
     cursor: pointer;
 
     
+}
+
+.containerSearchBarSaveListaValidade{
+  position:absolute;
+  top:80px;
 }
