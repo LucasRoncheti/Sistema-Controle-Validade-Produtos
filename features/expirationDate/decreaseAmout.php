@@ -38,6 +38,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
 
+    }else{
+        echo '<p style="text-align:center;color:red;"> Produto não cadastrado!</p>';
     }
 
 } else {

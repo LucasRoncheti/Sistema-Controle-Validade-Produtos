@@ -13,20 +13,36 @@ try {
 
                 
             if($row['quantidade'] > 0){
-                
-            $convertedDate = date('d/m/Y', strtotime($row['datavalidade']));
-            $dataCompra = date('d/m/Y', strtotime($row['datacompra']));
-                
-            echo '    <li onclick="popUpInfoProducts(\''.$dataCompra.'\',\''.$row['andarPrateleira'].'\',\''.$row['mapa'].'\',\''.$row['srcmapa'].'\')" class="item">';
-            echo '        <div class="imgItem">';
-            echo '            <img src="'.$row['src'].'" alt="">';
-            echo '        </div>';
-            echo '        <p class="productP">'.$row['nome'].'</p>';
-            echo '        <p class="idP">'.$row['numeroId'].'</p>';
-            echo '        <p class="dateP">'.$convertedDate.'</p>';
-            echo '        <p class="quantityP">'.$row['quantidade'].'</p>';
-            echo '        <div class=" green tagColor"></div>';
-            echo '    </li>';
+
+
+
+               // Supondo que $row['datavalidade'] seja uma data no formato "Y-m-d"
+        $rowDatavalidade = strtotime($row['datavalidade']);
+
+        // Supondo que $atualDate seja a data atual no formato "Y-m-d"
+        $atualDate = strtotime(date("Y-m-d"));  // Obtém a data atual
+
+        // Calcula a diferença em segundos
+        $diffInSeconds = $rowDatavalidade - $atualDate;
+
+        // Converte a diferença de segundos para dias
+        $diffInDays = floor($diffInSeconds / (60 * 60 * 24));
+
+        $tagColor ="";
+
+        if($diffInDays <= 60 && $diffInDays >= 31){
+            $tagColor ="green tagColor";
+        }
+        else if($diffInDays <= 30 && $diffInDays >= 16){
+            $tagColor ="orange tagColor";
+        }
+        else if($diffInDays <= 15 && $diffInDays >= 0){
+            $tagColor = "red  tagColor";
+        }else{
+            $tagColor = "green  tagColor";
+        }
+
+        include '../../includes/php/listExpirationCode.php';
             }
         }
         } else {

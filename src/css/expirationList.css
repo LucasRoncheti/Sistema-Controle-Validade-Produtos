@@ -93,7 +93,7 @@
 
 .containerItens {
     width: 95%;
-    height: 100%;
+    height: auto;
     margin: 127px auto 5px auto;
     list-style: none;
 }
@@ -129,6 +129,10 @@
     height: 35px;
     border-radius: 5px;
     /* margin-left: 5px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
 }
 
 .productP {
@@ -138,6 +142,7 @@
     justify-content: left;
     align-items: center;
     /* margin-left: 5px; */
+    text-transform: uppercase;
     padding: 5px;
 }
 

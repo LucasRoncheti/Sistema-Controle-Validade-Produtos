@@ -9,28 +9,28 @@ var listaValidade = () => {
                     <p>CONTROLE DE VALIDADE DOS PRODUTOS</p>
                     <div class="searchContainer">
                         <div class="containerForm">
-                            <form class="formDate">
+                            <div class="formDate">
                                 <img src="" alt="">
-                                <input id="" title="de" type="date">
+                                <input id="date01" title="de" type="date">
                                 <i class="bi bi-arrow-bar-right"></i>
                                 <img src="" alt="">
-                                <input title="até" type="date">
-                                <button  title="sendSearch" type="submit"><i class="bi bi-search"></i></button>
-                            </form>
+                                <input id="date02" title="ate" type="date">
+                                <button onclick="orderListBydates()"  title="sendSearch" ><i class="bi bi-search"></i></button>
+                            </div>
     
                         </div>
                      
                         <div class="containerQuickSerach">
 
-                            <div  class=" green quickSearch">
-                                <p>2 MESES</p>
+                            <div  onclick="orderListByDays(1)" class=" green quickSearch">
+                                <p>2 MESES </p>
                             </div>
     
-                            <div class=" orange quickSearch">
+                            <div onclick="orderListByDays(2)" class=" orange quickSearch">
                                 <p>1 MÊS</p>
                             </div>
     
-                            <div class=" red    quickSearch">
+                            <div onclick="orderListByDays(3)" class=" red    quickSearch">
                                 <p>15 DIAS</p>
                             </div>
                         </div>
@@ -60,43 +60,42 @@ var listaValidade = () => {
 
     `
     listProductsListaValidadePage()
-    console.log('chamndo lista ')
+
+
+    let searchBar = document.getElementById('searchBarProducts')
+
+    searchBar.addEventListener('input', () => {
+
+        fetch('./features/expirationDate/searchProductListaValidade.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'searchBar=' + encodeURIComponent(searchBar.value),
+        })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('containerItens').innerHTML = data
+
+            })
+            .catch(error => {
+                alert(error.message)
+            });
+    })
+
 }
 
 listaValidade()
 
 
 
-let searchBar = document.getElementById('searchBarProducts');
-
-searchBar.addEventListener('input', () => {
-
-    fetch('./features/expirationDate/searchProductListaValidade.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: 'searchBar=' + encodeURIComponent(searchBar.value),
-    })
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('containerItens').innerHTML = data
-
-        })
-        .catch(error => {
-            alert(error.message);
-        });
-})
-
 
 
 // this function shows the popUp with the map and data of the selected product
 
+let popUpInfoProducts = (buyDate, selectFloor, inputRange, srcmapa) => {
 
-
-let popUpInfoProducts = (buyDate,selectFloor,inputRange,srcmapa) => {
-
-    const containerMap =  $('#containerInfoProducts')
+    const containerMap = $('#containerInfoProducts')
     containerMap.html(`
         <span onclick="popUpInfoProductsClose()" class="span"><i class="bi bi-x-circle"></i></span>
         <p> Data Compra: ${buyDate} </p>
@@ -105,15 +104,71 @@ let popUpInfoProducts = (buyDate,selectFloor,inputRange,srcmapa) => {
         <img src="${srcmapa}"> 
    
    `)
-   containerMap.removeClass('displayNone')
- 
-}   
+    containerMap.removeClass('displayNone')
 
-
-let popUpInfoProductsClose = ()=>{
-
-    const containerMap =  $('#containerInfoProducts')
-    containerMap.addClass('displayNone')
 }
 
 
+let popUpInfoProductsClose = () => {
+
+    const containerMap = $('#containerInfoProducts')
+    containerMap.addClass('displayNone')
+}
+
+// order the list by a predate set (2 months or 1 month example)
+let orderListByDays = (days) => {
+    let date = "";
+    switch (days) {
+        case 1:
+            date = "+60 days"
+            break;
+        case 2:
+            date = "+30 days"
+            break;
+        case 3:
+            date = "+15 days"
+            break;
+        default:
+            alert("Invalid number of days.")
+            return;
+    }
+
+    fetch('./features/expirationDate/orderListByDays.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ date }),
+    })
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('containerItens').innerHTML = data
+        })
+        .catch(error => {
+            console.error(error.message)
+        })
+};
+
+
+// order by two dates 00/00/00/-> 11/11/11 example 
+
+let orderListBydates = () => {
+    let date01 = document.getElementById('date01').value
+    let date02 = document.getElementById('date02').value
+    console.log(date01, date02)
+
+    fetch('./features/expirationDate/orderListByDates.php', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ date01, date02 }),
+    })
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('containerItens').innerHTML = data
+        })
+        .catch(error => {
+            console.error(error.message)
+        })
+}

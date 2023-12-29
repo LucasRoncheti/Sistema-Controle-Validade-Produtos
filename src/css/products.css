@@ -111,9 +111,10 @@
     justify-content: left;
     align-items: center;
     text-transform: uppercase;
+    margin-left: 5px;
 }
 .IdProductSave{
-    width: 10%;
+    width: 35%;
     height: 100%;
     display: flex;
     justify-content: center;
