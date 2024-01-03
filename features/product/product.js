@@ -156,7 +156,7 @@ let deleteProducts = (productId, pathImag) => {
         fetch('./features/product/deleteProduct.php', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json', 
             },
             body: JSON.stringify({
                 id: productId,
@@ -248,10 +248,10 @@ let updateProduct = () => {
 
 
             let formData = new FormData();
-            formData.append('productName', productName);
-            formData.append('productId', productId);
-            formData.append('image', blob, 'image.jpg');
-            formData.append('id', inputId,);
+            formData.append('productName', productName)
+            formData.append('productId', productId)
+            formData.append('image', blob, 'image.jpg')
+            formData.append('id', inputId,)
 
 
 
@@ -283,3 +283,4 @@ let Register_OR_Update = () => {
         updateProduct()
     }
 }
+

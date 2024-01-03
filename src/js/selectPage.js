@@ -69,6 +69,7 @@ let selectedPage = (numberIndex, id) => {
         changeClass()
         idPreviwDiv = idDiv
         runToPosition()
+        conditional = true;
 
     } else if (numberIndex === 2) {
         targetPosition = offsetSpan + spaceBetweenSpans * 1
@@ -76,13 +77,14 @@ let selectedPage = (numberIndex, id) => {
         changeClass()
         idPreviwDiv = idDiv
         runToPosition()
-
+        conditional = true;
     } else if (numberIndex === 3) {
         targetPosition = (offsetSpan * 2) + spaceBetweenSpans * 2
    
         changeClass()
         idPreviwDiv = idDiv
         runToPosition()
+        conditional = true;
 
     } else {
         targetPosition = (offsetSpan * 3) + spaceBetweenSpans * 3
@@ -90,6 +92,7 @@ let selectedPage = (numberIndex, id) => {
         changeClass()
         idPreviwDiv = idDiv
         runToPosition()
+        conditional = true;
 
     }
 

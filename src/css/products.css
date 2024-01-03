@@ -43,6 +43,7 @@
   padding: 3px;
   height: 25px;
   border:none;
+  text-transform: uppercase;
 }
 
 .saveProductButton{
@@ -52,6 +53,7 @@
   border: none;
   font-size: 2em;
   color: white;
+  cursor: pointer;
 }
 
 
@@ -76,6 +78,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 7px;
 }
 
 .imgItemSave{
@@ -109,9 +112,10 @@
     justify-content: left;
     align-items: center;
     text-transform: uppercase;
+    margin-left: 5px;
 }
 .IdProductSave{
-    width: 10%;
+    width: 35%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -141,4 +145,5 @@
   height: 35px;
   border: none;
   border-radius: 0px 5px 5px 0px;
+  text-transform: uppercase;
 }

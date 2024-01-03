@@ -3,13 +3,22 @@
 include '../../includes/php/connection.php';
 
 try {
-    $sql = 'SELECT * FROM produto ORDER BY nome';
+    $sql = 'SELECT * FROM expdate ORDER BY datavalidade';
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
+
+        
+        include '../../includes/php/headerListExpirationCode.php';
         if ($result->num_rows > 0) {
+
             while ($row = mysqli_fetch_assoc($result)) {
-                include '../../includes/php/productsRegisterList.php';
+
+
+                if ($row['quantidade'] > 0) {
+
+                    include '../../includes/php/listExpirationCode.php';
+                }
             }
         } else {
             echo '<p style ="text-align:center;">Nenhum resultado encontrado</p>';

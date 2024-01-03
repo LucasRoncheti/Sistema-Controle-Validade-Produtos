@@ -9,7 +9,8 @@ try {
     if ($result) {
         if ($result->num_rows > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-                include '../../includes/php/productsRegisterList.php';
+                include '../../includes/php/productsLi.php';
+                
             }
         } else {
             echo '<p style ="text-align:center;">Nenhum resultado encontrado</p>';

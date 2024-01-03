@@ -23,10 +23,9 @@
 .productsData{
     width: 80%;
     height: 140px;
-   
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 
@@ -36,6 +35,9 @@
     width: 80%;
     height: 30px;
     font-size: 1.5em;
+    text-align: center;
+    border: solid 3px black;
+    border-radius: 5px;
 }
 
 .productImageBarCode{
@@ -61,4 +63,14 @@
     height: 120px;
     background-color: var(--cor05);
     border-radius: 10px;
+  }
+
+
+  #formDecreaseAmount{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
   }

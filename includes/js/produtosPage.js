@@ -23,7 +23,7 @@ let produtos = () => {
 
     <div class="containerSearchBarSave">
         <div class=" green SearchIcon"><i class="bi bi-search"></i></div>
-        <input class="searchBarProducts" type="text">
+        <input id="searchBarProducts" class="searchBarProducts" type="text">
     </div>
 
     <ul id="containerItensSave" class="containerItensSave">
@@ -35,4 +35,28 @@ let produtos = () => {
 
 `
 listProducts()
+
+
+let searchBar = document.getElementById('searchBarProducts');
+
+searchBar.addEventListener('input', () => { 
+    console.log(searchBar.value);
+
+    fetch('./features/product/searchProduct.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'searchBar=' + encodeURIComponent(searchBar.value),
+    })
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('containerItensSave').innerHTML = data
+        
+    })
+    .catch(error => {
+        alert(error.message);
+    });
+})
+
 }
