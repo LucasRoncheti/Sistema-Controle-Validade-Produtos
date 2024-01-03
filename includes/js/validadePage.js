@@ -47,6 +47,12 @@ let validade = () => {
         </div>
     </form>
 
+    <div class="bellDate">
+    <i id="bellSlash" class="bi bi-bell-slash cursorPointer"></i>
+    <i  id="bellFill" class="displayNone  bi bi-bell-fill cursorPointer"></i>
+    <input  class="displayNone" type="date" id="inputMoreDays">
+    </div>
+
     <button onclick="registerExpirationDate()" class=" green saveProductButtonExpiration">
         <i class="bi bi-floppy2-fill"></i>
     </button>
@@ -54,11 +60,45 @@ let validade = () => {
 
 
 <div class="map">
-    <img  id="map"  src="src/img/plantaBaixa.jpg" alt="PlantaBaixa">
+    <img class="mapNumeros" src="src/img/numeros.png" alt="PlantaBaixa">
+    <img  class="mapImage"  id="map"  src="src/img/plantaBaixa.png" alt="PlantaBaixa">
 </div>
-<div class="containerInputsMap">
-    <input id="inputRange" step="10" class="inputRange" type="range">
 
+<div class="containerInputsMap">
+
+    <input  value = "0"id="inputRange" step="3.7" class="inputRange" type="range">
+
+    <div id="inputRangeMarks" class=" inputRangeMarks"> 
+    <span>0</span>
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+    <span>4</span>
+    <span>5</span>
+    <span>6</span>
+    <span>7</span>
+    <span>8</span>
+    <span>9</span>
+    <span>10</span>
+    <span>11</span>
+    <span>12</span>
+    <span>13</span>
+    <span>14</span>
+    <span>15</span>
+    <span>16</span>
+    <span>17</span>
+    <span>18</span>
+    <span>19</span>
+    <span>20</span>
+    <span>21</span>
+    <span>22</span>
+    <span>23</span>
+    <span>24</span>
+    <span>25</span>
+    <span>26</span>
+    <span>27</span>
+
+    </div>
     <div class="containerSelect">
         <i class="bi bi-list-nested"></i>
         <select class="selectFloor" name="floor" id="selectFloor">
@@ -113,8 +153,42 @@ let validade = () => {
 
 
     `
+    const inputRange = document.getElementById("inputRange")
+    let map = document.getElementById("map")
     
+    inputRange.addEventListener("change",()=>{
 
+        inputStep = 3.7
+        stepPosiction = inputRange.value / inputStep
+        const resultadoArredondado = stepPosiction.toFixed(0); 
+
+        map.src = "src/img/mapasVersoes/"+resultadoArredondado+".png"
+        
+    } )
+
+
+
+
+    // change  the bell symbol and show the input field 
+    const bellSlash = document.getElementById('bellSlash');
+    const bellFill = document.getElementById('bellFill');
+    const inputMoreDays = document.getElementById('inputMoreDays');
+    
+    bellSlash.addEventListener('click', () => {
+       inputMoreDays.classList.toggle('displayNone');
+       bellFill.classList.toggle('displayNone');
+       bellSlash.classList.toggle('displayNone');
+       bellFill.style.color = "red"
+    })
+
+    bellFill.addEventListener('click', () => {
+        inputMoreDays.classList.toggle('displayNone');
+        bellFill.classList.toggle('displayNone');
+        bellSlash.classList.toggle('displayNone');
+     })
+ 
+
+    
 
    // get the id number and compare it with the id number in the database, after returning with the server response
 

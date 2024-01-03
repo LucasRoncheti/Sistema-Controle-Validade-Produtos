@@ -33,6 +33,13 @@ var listaValidade = () => {
                             <div onclick="orderListByDays(3)" class=" red    quickSearch">
                                 <p>15 DIAS</p>
                             </div>
+
+
+                            <div onclick="orderListByDays(4)" class=" black    quickSearch">
+                            <p class="bellBlack"><i  class="  bi bi-bell-fill"></i></p>
+                            </div>
+
+                            
                         </div>
                      
 
@@ -98,9 +105,9 @@ let popUpInfoProducts = (buyDate, selectFloor, inputRange, srcmapa) => {
     const containerMap = $('#containerInfoProducts')
     containerMap.html(`
         <span onclick="popUpInfoProductsClose()" class="span"><i class="bi bi-x-circle"></i></span>
-        <p> Data Compra: ${buyDate} </p>
-        <p> Posição no mapa:${inputRange} </p>
-        <p> Posição na prateleira:${selectFloor} </p>
+        <p> Data Compra:<strong> ${buyDate}</strong> </p>
+        <p> Mapa: <strong>${inputRange} </strong> </p>
+        <p> Prateleira:<strong> ${selectFloor}</strong> </p>
         <img src="${srcmapa}"> 
    
    `)
@@ -127,6 +134,9 @@ let orderListByDays = (days) => {
             break;
         case 3:
             date = "+15 days"
+            break;
+        case 4:
+            date = "0000-00-00"
             break;
         default:
             alert("Invalid number of days.")

@@ -3,7 +3,7 @@
 include '../../includes/php/connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    
+
     $productImageExpiration = $_POST['productImageExpiration'];
     $productExpiration = $_POST['productExpiration'];
     $idProductExpiration = $_POST['idProductExpiration'];
@@ -13,22 +13,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $selectFloor = $_POST['selectFloor'];
     $inputRange = $_POST['inputRange'];
     $imageMap = $_POST['imageMap'];
+    $inputBell = $_POST['inputBell'];
 
 
     $stmt = $conn->prepare('INSERT INTO
-     expdate  (src, nome , numeroId, datacompra, datavalidade, quantidade, andarPrateleira ,mapa, srcmapa) 
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)' );
+     expdate  (src, nome , numeroId, datacompra, datavalidade, quantidade, andarPrateleira ,mapa, srcmapa, inputBell) 
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?,?,?)');
 
-    $stmt ->bind_param('ssissiiis',
-    $productImageExpiration,
-    $productExpiration,
-    $idProductExpiration,
-    $buyDate,
-    $expirationDate,
-    $amount,
-    $selectFloor,
-    $inputRange,
-    $imageMap);
+    $stmt->bind_param(
+        'ssissiiiss',
+        $productImageExpiration,
+        $productExpiration,
+        $idProductExpiration,
+        $buyDate,
+        $expirationDate,
+        $amount,
+        $selectFloor,
+        $inputRange,
+        $imageMap,
+        $inputBell
+    );
 
     $stmt->execute();
 
@@ -41,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
 
-}else{
+} else {
     http_response_code(400);
     echo 'Método de requisição inválido';
 }

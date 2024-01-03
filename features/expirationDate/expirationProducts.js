@@ -80,6 +80,10 @@ let registerExpirationDate = () => {
     let inputRange = $('#inputRange').val()
     let imageMap = $('#map').attr('src')
 
+    let inputBell = $('#inputMoreDays').val()
+
+
+
 
     if (productExpiration === "" || idProductExpiration === "" || buyDate === "" || expirationDate === "" || amount === "" || selectFloor === "" || inputRange === 0) {
         alert('Preencha todos os campos!')
@@ -95,6 +99,7 @@ let registerExpirationDate = () => {
         formData.append('selectFloor', selectFloor)
         formData.append('inputRange', inputRange)
         formData.append('imageMap', imageMap)
+        formData.append('inputBell', inputBell)
 
         fetch('./features/expirationDate/expirationDateRegistration.php', {
             method: 'POST',
