@@ -9,12 +9,12 @@ $data = json_decode(file_get_contents('php://input'), true);
 if (isset($data['date'])) {
     $date = $data['date'];
 
-    $limitDate = date('y-m-d', strtotime($date));
+    $limitDate1 = date('y-m-d', strtotime($date));
 
     if ($date === "0000-00-00") {
 
-        $stmt = $conn->prepare("SELECT * FROM expdate WHERE inputBell != ? ORDER BY datavalidade");
-        $stmt->bind_param('s', $limitDate);
+        $stmt = $conn->prepare("SELECT * FROM expdate WHERE inputBell != ? ORDER BY inputBell desc");
+        $stmt->bind_param('s', $date);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -25,7 +25,7 @@ if (isset($data['date'])) {
             while ($row = $result->fetch_assoc()) {
 
 
-                $rowDatavalidade = strtotime($row['datavalidade']);
+                $rowDatavalidade = strtotime($row['inputBell']);
 
 
                 $atualDate = strtotime(date("Y-m-d"));  // Obtém a data atual
@@ -48,11 +48,13 @@ if (isset($data['date'])) {
                         case in_array($diffInDays, $rangeArray):
                             $tagColor = "green tagColor";
                             include '../../includes/php/listExpirationCode.php';
+                           
                             break;
 
                         case in_array($diffInDays, $rangeArray1):
                             $tagColor = "orange tagColor";
                             include '../../includes/php/listExpirationCode.php';
+                        
                             break;
 
                         case ($diffInDays <= 15 && $diffInDays >= 0):
@@ -73,10 +75,10 @@ if (isset($data['date'])) {
        
     } else {
 
-        $limitDate = date('y-m-d', strtotime($date));
+        $limitDate2 = date('y-m-d', strtotime($date));
 
         $stmt = $conn->prepare("SELECT * FROM expdate WHERE datavalidade <= ? ORDER BY datavalidade");
-        $stmt->bind_param('s', $limitDate);
+        $stmt->bind_param('s', $limitDate2);
         $stmt->execute();
         $result = $stmt->get_result();
 

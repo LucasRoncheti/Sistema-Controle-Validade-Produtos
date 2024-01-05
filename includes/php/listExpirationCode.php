@@ -15,7 +15,8 @@ $diffInDays = floor($diffInSeconds / (60 * 60 * 24));
 // conditional for the ico bell display ot not in the list of expirations date
 $rowDataBell = strtotime($row['inputBell']);
 
-
+$limitDate = "0000-00-00";
+$limitDateConvet = strtotime($limitDate);
 
 $tagColor = "";
 
@@ -23,7 +24,7 @@ if ($diffInDays <= 60 && $diffInDays >= 31) {
     $tagColor = "green tagColor";
 } else if ($diffInDays <= 30 && $diffInDays >= 16) {
     $tagColor = "orange tagColor";
-} else if ($diffInDays <= 15 && $diffInDays >= 0) {
+} else if ($diffInDays <= 15 || $diffInDays <= 0) {
     $tagColor = "red  tagColor";
 } else {
     $tagColor = "green  tagColor";
@@ -43,7 +44,7 @@ echo '        <p class="productP">' . $row['nome'] . '</p>';
 echo '        <p class="idP">' . $row['numeroId'] . '</p>';
 echo '        <p class="dateP">' . $convertedDate . '</p>';
 echo '        <p class="quantityP">' . $row['quantidade'] . '</p>';
-                if($rowDataBell === $atualDate){
+                if($rowDataBell <= $atualDate && $rowDataBell > $limitDateConvet ){
                     echo '        <div class="' . $tagColor . '"> ' . $diffInDays . ' Dias <i  class=" bellList bi bi-bell-fill"></i> </div>';
                 }else{
                     echo '        <div class="' . $tagColor . '"> ' . $diffInDays . ' Dias  </div>';

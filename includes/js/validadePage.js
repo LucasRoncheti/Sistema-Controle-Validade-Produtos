@@ -60,46 +60,59 @@ let validade = () => {
 
 
 <div class="map">
-    <img class="mapNumeros" src="src/img/numeros.png" alt="PlantaBaixa">
-    <img  class="mapImage"  id="map"  src="src/img/plantaBaixa.png" alt="PlantaBaixa">
+    <img  class="mapImage"  id="map"  src="src/img/mapasVersoes/0.png" alt="PlantaBaixa">
 </div>
 
 <div class="containerInputsMap">
 
-    <input  value = "0"id="inputRange" step="3.7" class="inputRange" type="range">
+    <div class="containerRange">
+        <input  value = "0"id="inputRange" class="inputRange" type="range">
 
-    <div id="inputRangeMarks" class=" inputRangeMarks"> 
-    <span>0</span>
-    <span>1</span>
-    <span>2</span>
-    <span>3</span>
-    <span>4</span>
-    <span>5</span>
-    <span>6</span>
-    <span>7</span>
-    <span>8</span>
-    <span>9</span>
-    <span>10</span>
-    <span>11</span>
-    <span>12</span>
-    <span>13</span>
-    <span>14</span>
-    <span>15</span>
-    <span>16</span>
-    <span>17</span>
-    <span>18</span>
-    <span>19</span>
-    <span>20</span>
-    <span>21</span>
-    <span>22</span>
-    <span>23</span>
-    <span>24</span>
-    <span>25</span>
-    <span>26</span>
-    <span>27</span>
-
+        <div id="inputRangeMarks" class=" inputRangeMarks"> 
+        <span>0</span>
+        <span>A</span>
+        <span>B</span>
+        <span>C</span>
+        <span>D</span>
+        <span>E</span>
+        <span>F</span>
+        <span>G</span>
+        <span>#</span>
+        <span>H</span>
+        <span>I</span>
+        <span>J</span>
+        <span>L</span>
+        <span>M</span>
+        <span>[/]</span>
+        <span>N</span>
+        <span>O</span>
+        <span>P</span>
+        <span>Q</span>
+        <span>R</span>
+        <span>S</span>
+        <span>T</span>
+        <span>U</span>
+        <span>V</span>
+        <span>X</span>
+        <span>Z</span>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+        <span>7</span>
+        <span>8</span>
+        <span>9</span>
+        <span>10</span>
+        <span>11</span>
+        <span>12</span>
+        <span>0</span>
+        </div>
+    
     </div>
     <div class="containerSelect">
+        <p>Posição ne prateleira</p>
         <i class="bi bi-list-nested"></i>
         <select class="selectFloor" name="floor" id="selectFloor">
             <option value="01">01</option>
@@ -153,16 +166,21 @@ let validade = () => {
 
 
     `
+
+
+
     const inputRange = document.getElementById("inputRange")
     let map = document.getElementById("map")
     
     inputRange.addEventListener("change",()=>{
 
-        inputStep = 3.7
+        inputStep = 2.631578947368421
+        inputRange.setAttribute("step", inputStep)
         stepPosiction = inputRange.value / inputStep
         const resultadoArredondado = stepPosiction.toFixed(0); 
 
         map.src = "src/img/mapasVersoes/"+resultadoArredondado+".png"
+     
         
     } )
 

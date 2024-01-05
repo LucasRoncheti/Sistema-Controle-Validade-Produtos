@@ -106,7 +106,7 @@ let popUpInfoProducts = (buyDate, selectFloor, inputRange, srcmapa) => {
     containerMap.html(`
         <span onclick="popUpInfoProductsClose()" class="span"><i class="bi bi-x-circle"></i></span>
         <p> Data Compra:<strong> ${buyDate}</strong> </p>
-        <p> Mapa: <strong>${inputRange} </strong> </p>
+      
         <p> Prateleira:<strong> ${selectFloor}</strong> </p>
         <img src="${srcmapa}"> 
    
@@ -128,6 +128,7 @@ let orderListByDays = (days) => {
     switch (days) {
         case 1:
             date = "+60 days"
+            console.log("ta mandando esse date ",date)
             break;
         case 2:
             date = "+30 days"
@@ -137,6 +138,7 @@ let orderListByDays = (days) => {
             break;
         case 4:
             date = "0000-00-00"
+            console.log("ta mandando esse date ",date)
             break;
         default:
             alert("Invalid number of days.")
