@@ -8,7 +8,8 @@ let getImage = () => {
         var file = event.target.files[0];
 
         if (!file) {
-            console.log('Nenhuma imagem selecionada.');
+            audio("error")
+            alert('Nenhuma imagem selecionada.');
             return;
         }
 
@@ -81,9 +82,11 @@ let registerProduct = () => {
     ctx.drawImage(imgElement, 0, 0, newWidth, newHeight);
 
     if (productName === "") {
+        audio("error")
         alert('Preencha o nome do produto !')
         return
     } else if (productId === "") {
+        audio("error")
         alert('Preencha o ID do produto !')
         return
     } else {
@@ -104,13 +107,15 @@ let registerProduct = () => {
             })
                 .then((response) => response.text())
                 .then(data => {
+                    audio("sucesso")
                     alert(data);
                     productForm.reset();
                     document.getElementById('thumbnail').src = "src/img/cameraicon.png";
                     listProducts()
                 })
                 .catch(error => {
-                    console.error('Erro ao registrar o produto:', error);
+                    audio("error")
+                    alert('Erro ao registrar o produto:', error);
                 });
         }, 'image/jpeg', 0.4);
 
@@ -166,15 +171,17 @@ let deleteProducts = (productId, pathImag) => {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-
-                    console.log('Produto excluído com sucesso!');
+                    audio("sucesso")
+                    alert('Produto excluído com sucesso!');
                     listProducts()
 
                 } else {
-                    console.error('Erro ao excluir o produto:', data.error);
+                    audio("error")
+                    alert('Erro ao excluir o produto:', data.error);
                 }
             })
             .catch(error => {
+                audio("error")
                 console.error('Erro na solicitação fetch:', error);
             });
     }
@@ -237,9 +244,12 @@ let updateProduct = () => {
     ctx.drawImage(imgElement, 0, 0, newWidth, newHeight);
 
     if (productName === "") {
+        audio("error")
         alert('Preencha o nome do produto !')
+        
         return
     } else if (productId === "") {
+        audio("error")
         alert('Preencha o ID do produto !')
         return
     } else {
@@ -261,6 +271,7 @@ let updateProduct = () => {
             })
                 .then((response) => response.text())
                 .then(data => {
+                    audio("sucesso")
                     alert(data);
                     productForm.reset();
                     document.getElementById('thumbnail').src = "src/img/cameraicon.png";
@@ -268,6 +279,7 @@ let updateProduct = () => {
                     cond = false
                 })
                 .catch(error => {
+                    audio("error")
                     console.error('Erro ao registrar o produto:', error);
                 });
         }, 'image/jpeg', 0.4);

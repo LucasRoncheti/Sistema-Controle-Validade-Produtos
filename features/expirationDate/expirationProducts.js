@@ -24,6 +24,7 @@ async function listProductsListaValidadePage() {
 
 
         alert("Erro na requisição" + error.message)
+        audio("error")
 
     }
 
@@ -50,6 +51,7 @@ async function listProductsValidadePage() {
 
 
         alert("Erro na requisição" + error.message)
+        audio("error")
 
     }
 
@@ -86,7 +88,11 @@ let registerExpirationDate = () => {
 
 
     if (productExpiration === "" || idProductExpiration === "" || buyDate === "" || expirationDate === "" || amount === "" || selectFloor === "" || inputRange === 0) {
-        alert('Preencha todos os campos!')
+        audio("error")
+            alert("preencha todos os campos ")
+    
+        
+
     } else {
 
         let formData = new FormData()
@@ -107,13 +113,18 @@ let registerExpirationDate = () => {
         })
             .then((response => response.text()))
             .then(data => {
-                alert(data)
+                audio("sucesso")
+                    alert(data)
+                
+             
                 validade()
+
 
 
 
             })
             .catch(error => {
+                audio("error")
                 alert('Erro ao salvar', error)
             })
 

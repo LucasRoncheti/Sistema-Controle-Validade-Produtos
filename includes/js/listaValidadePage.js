@@ -128,7 +128,7 @@ let orderListByDays = (days) => {
     switch (days) {
         case 1:
             date = "+60 days"
-            console.log("ta mandando esse date ",date)
+          
             break;
         case 2:
             date = "+30 days"
@@ -138,7 +138,7 @@ let orderListByDays = (days) => {
             break;
         case 4:
             date = "0000-00-00"
-            console.log("ta mandando esse date ",date)
+          
             break;
         default:
             alert("Invalid number of days.")
@@ -167,7 +167,7 @@ let orderListByDays = (days) => {
 let orderListBydates = () => {
     let date01 = document.getElementById('date01').value
     let date02 = document.getElementById('date02').value
-    console.log(date01, date02)
+
 
     fetch('./features/expirationDate/orderListByDates.php', {
         method: "POST",

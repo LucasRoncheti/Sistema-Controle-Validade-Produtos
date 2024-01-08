@@ -25,7 +25,7 @@ if (isset($data['date'])) {
             while ($row = $result->fetch_assoc()) {
 
 
-                $rowDatavalidade = strtotime($row['inputBell']);
+                $rowDatavalidade = strtotime($row['datavalidade']);
 
 
                 $atualDate = strtotime(date("Y-m-d"));  // Obtém a data atual
@@ -41,25 +41,33 @@ if (isset($data['date'])) {
                 $rangeArray = range(31, 60);
 
                 $rangeArray1 = range(16, 30);
+                $rangeArray2 = range(60,10000);
 
-                if ($row['quantidade'] > 0) {
+                if ($row['quantidade'] > 0 && $row['inputBell'] != $date) {
 
                     switch ($diffInDays) {
                         case in_array($diffInDays, $rangeArray):
                             $tagColor = "green tagColor";
                             include '../../includes/php/listExpirationCode.php';
-                           
+                         
                             break;
+
+                            case in_array($diffInDays, $rangeArray2):
+                                $tagColor = "green tagColor";
+                                include '../../includes/php/listExpirationCode.php';
+                            
+                                break;
 
                         case in_array($diffInDays, $rangeArray1):
                             $tagColor = "orange tagColor";
                             include '../../includes/php/listExpirationCode.php';
-                        
+                          
                             break;
 
                         case ($diffInDays <= 15 && $diffInDays >= 0):
                             $tagColor = "red tagColor";
                             include '../../includes/php/listExpirationCode.php';
+                         
                             break;
 
                     }

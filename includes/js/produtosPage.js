@@ -40,7 +40,7 @@ listProducts()
 let searchBar = document.getElementById('searchBarProducts');
 
 searchBar.addEventListener('input', () => { 
-    console.log(searchBar.value);
+
 
     fetch('./features/product/searchProduct.php', {
         method: 'POST',
