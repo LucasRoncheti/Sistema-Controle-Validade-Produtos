@@ -32,13 +32,14 @@ const saveNumber = (mainIndex) => {
 
 ////////////////////////////////
 
-
 function check() {
     if (checkbox.checked) {
         nameElement.style.display = "block";
+        mainIndex++
     } else {
         nameElement.style.display = "none";
         conditionalCopy = false
+        document.getElementById('name').value = ""
     }
 }
 
