@@ -7,7 +7,7 @@ let saidaProdutos = () => {
 
     <div class="containerBarCode">
         <img class="barCodeImg" src="./src/img/barCode.gif" alt="">
-
+        <button id="btn-quantidade-produtos-prateleira" class="btn-quantidade-produtos-prateleira">Produtos Zerados</button>
         <form  id="formDecreaseAmount" action="submit">
             <input  id="inputBarCode" class="inputBarCode" type="text">
             <button style="display:none;" type="submit">teste </button>
