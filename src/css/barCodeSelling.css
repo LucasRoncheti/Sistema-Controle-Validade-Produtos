@@ -29,6 +29,37 @@
 }
 
 
+.btn-quantidade-produtos-prateleira{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-color: var(--cor03);
+  border-radius: 5px;
+  border: none;
+  width: auto;
+  height: 20px;
+  padding: 8px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  z-index: 30;
+}
+.btn-quantidade-produtos-prateleira:hover{
+  background-color: red;
+}
+
+
+.listZeroProducts{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--branco);
+  padding-top: 40px;
+
+}
 
 
 .inputBarCode{

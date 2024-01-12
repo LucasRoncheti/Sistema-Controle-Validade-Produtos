@@ -2,12 +2,15 @@
 
 
 let saidaProdutos = () => {
+
+
+
     mainContainer.innerHTML = `
 
 
     <div class="containerBarCode">
         <img class="barCodeImg" src="./src/img/barCode.gif" alt="">
-        <button id="btn-quantidade-produtos-prateleira" class="btn-quantidade-produtos-prateleira">Produtos Zerados</button>
+        <button onclick="zeroListProductsquantity(),showList()" id="btn-quantidade-produtos-prateleira" class="btn-quantidade-produtos-prateleira">Produtos Zerados</button>
         <form  id="formDecreaseAmount" action="submit">
             <input  id="inputBarCode" class="inputBarCode" type="text">
             <button style="display:none;" type="submit">teste </button>
@@ -15,6 +18,10 @@ let saidaProdutos = () => {
 
         <div id="productsData" class="productsData">
 
+
+        </div>
+
+        <div id ="listZeroProducts" class="listZeroProducts displayNone">
 
         </div>
     </div>
@@ -84,7 +91,40 @@ let saidaProdutos = () => {
                 console.error('Erro:', error.message)
             });
     });
+
+
+
+}
+
+async function zeroListProductsquantity() {
+    let containerList = document.getElementById('listZeroProducts')
+
+    const url = './features/expirationDate/expirationListZeroQuantity.php'
+
+    try {
+
+        const response = await fetch(url)
+
+        if (!response.ok) {
+            throw new Error("Erro na listagem dos produtos ")
+        }
+
+        const data = await response.text()
+        containerList.innerHTML = data
+    } catch (error) {
+
+
+        alert("Erro na requisição" + error.message)
+        audio("error")
+
+    }
+
+
+   
 }
 
 
+function showList() {
+    document.getElementById("listZeroProducts").classList.toggle("displayNone")
+}
 

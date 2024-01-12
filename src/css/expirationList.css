@@ -115,6 +115,21 @@
 }
 
 
+.itemListZero {
+    width: 100%;
+    height: 40px;
+    background-color: var(--cor07);
+    display: flex;
+    border-radius: 5px;
+    padding: 2px;
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+
 
 .itemMainLIst {
     width: 100%;

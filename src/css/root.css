@@ -71,6 +71,10 @@ footer{
 .red{
     background-color: var(--cor03);
 }
+
+.red:hover{
+    background-color: red;
+}
 .orange{
     background-color: var(--cor06);
 }
