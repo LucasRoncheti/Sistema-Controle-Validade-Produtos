@@ -5,11 +5,11 @@ header('Content-Type: application/json');
 
 
 $data = json_decode(file_get_contents("php://input"));
-$productId = $data->id;
+$productIdZero = $data->id;
 
 
 
-$sqlImg = "SELECT img FROM produto WHERE id = $productId";
+$sqlImg = "SELECT img FROM produto WHERE id = $productIdZero";
 $result = mysqli_query($conn, $sqlImg);
 if ($result) {
     if ($result->num_rows > 0) {
@@ -25,7 +25,7 @@ if (file_exists($caminhoDoArquivo)) {
     if (unlink($caminhoDoArquivo)) {
 
 
-        $sql = "DELETE FROM produto WHERE id = $productId";
+        $sql = "DELETE FROM produto WHERE id = $productIdZero";
 
         $result = $conn->query($sql);
 

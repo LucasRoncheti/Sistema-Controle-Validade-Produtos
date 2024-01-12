@@ -5,7 +5,7 @@ include '../../includes/php/connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $productName = $_POST['productName'];
-    $productId = $_POST['productId'];
+    $productIdZero = $_POST['productId'];
 
     $uploadDirectory = '../../src/uploads/';
     $downloaddirectory  = './src/uploads/';
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (move_uploaded_file($tempFile, $targetFile)) {
             
             $stmt = $conn->prepare('INSERT INTO produto (nome, numeroId, img) VALUES (?,?,?)');
-            $stmt->bind_param('sis', $productName, $productId, $targetDownloadDirectory);
+            $stmt->bind_param('sis', $productName, $productIdZero, $targetDownloadDirectory);
             $stmt->execute();
 
             if ($stmt->affected_rows > 0) {

@@ -25,6 +25,10 @@ body{
     height: 100vh;
     background-color: var(--branco);
 position: relative;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 }
 
 header{
@@ -52,7 +56,8 @@ main{
 }
 
 footer{
-    width: 100%;
+    position: relative;
+    width: 850px;
     height: 30px;
     display: flex;
     justify-content: center;

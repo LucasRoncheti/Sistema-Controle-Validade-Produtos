@@ -15,6 +15,7 @@ try {
         echo '        <p class="productP">Nome do produto</p>';
         echo '        <p class="idP">Numero id</p>';
         echo '        <p class="quantityP">Quant.</p>';
+       
         echo '    </li>';
 
         if ($result->num_rows > 0) {
@@ -24,13 +25,14 @@ try {
 
                 if ($row['quantidade'] == 0) {
 
-                    echo '    <li  class="itemListZero">';
+                    echo '    <li  onclick="deleteProductList(\''.$row['id'].'\')" class="itemListZero">';
                     echo '        <div class="imgItem">';
                     echo '            <img src="' . $row['src'] . '" alt="">';
                     echo '        </div>';
                     echo '        <p class="productP">' . $row['nome'] . '</p>';
                     echo '        <p class="idP">' . $row['numeroId'] . '</p>';
                     echo '        <p class="quantityP">' . $row['quantidade'] . '</p>';
+             
                     echo '    </li>';
                 }
             }

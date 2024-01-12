@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <header><img src="src/img/logo.png" alt="Logo Oliveira Produtos Naturais"></header>
+    <header><img src="src/img/logo.png" alt="Logo Oliveira Produtos Naturais"></i></header>
 
     <main>
 
@@ -65,10 +65,19 @@
 
     <footer>
         <p>Desenvolvido por Lucas Roncheti Design && Code</p>
+        <i onclick="openPdf()" style="cursor:pointer;position: absolute;right: 30px;font-size: 1.4em;" class="bi bi-question-octagon-fill"></i>
     </footer>
 </body>
 
 </html>
+
+
+<script>
+    function openPdf() {
+        let pdfUrl = "./src/pdf/projeto loja.pdf"
+        window.open(pdfUrl, '_blank');
+    }
+</script>
 
 <script src="features/expirationDate/expirationProducts.js"></script>
 <script src="includes/js/listaValidadePage.js"></script>

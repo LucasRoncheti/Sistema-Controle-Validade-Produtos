@@ -5,7 +5,7 @@ include '../../includes/php/connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $productName = $_POST['productName'];
-    $productId = $_POST['productId'];
+    $productIdZero = $_POST['productId'];
     $id = $_POST['id'];
 
     $uploadDirectory = '../../src/uploads/';
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (move_uploaded_file($tempFile, $targetFile)) {
             
             $stmt = $conn->prepare('UPDATE produto SET nome=?, numeroId=?, img=? WHERE id=?');
-            $stmt->bind_param('sisi', $productName, $productId, $targetDownloadDirectory, $id);
+            $stmt->bind_param('sisi', $productName, $productIdZero, $targetDownloadDirectory, $id);
             $stmt->execute();
             
 

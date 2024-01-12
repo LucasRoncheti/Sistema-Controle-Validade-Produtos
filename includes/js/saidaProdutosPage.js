@@ -94,8 +94,12 @@ let saidaProdutos = () => {
 
 
 
+
 }
 
+
+
+// to list all products with the quantity is zero 
 async function zeroListProductsquantity() {
     let containerList = document.getElementById('listZeroProducts')
 
@@ -120,11 +124,32 @@ async function zeroListProductsquantity() {
     }
 
 
-   
+
 }
 
-
+// show the list that contains the prodycts  with the quantity is zero 
 function showList() {
     document.getElementById("listZeroProducts").classList.toggle("displayNone")
 }
 
+
+// this function delete de products from DB where the quantity is equal to zero 
+
+function deleteProductList(id) {
+    fetch('./features/expirationDate/deleteZeroProductsList.php', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({id:id})
+    })
+        .then(response => response.text())
+        .then(data => {
+
+            console.info(data)
+            zeroListProductsquantity()
+
+
+        })
+        .catch(error => {
+            console.warn('Erro:', error.message)
+        });
+}
