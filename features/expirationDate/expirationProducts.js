@@ -89,9 +89,9 @@ let registerExpirationDate = () => {
 
     if (productExpiration === "" || idProductExpiration === "" || buyDate === "" || expirationDate === "" || amount === "" || selectFloor === "" || inputRange === 0) {
         audio("error")
-            alert("preencha todos os campos ")
-    
-        
+        alert("preencha todos os campos ")
+
+
 
     } else {
 
@@ -107,31 +107,35 @@ let registerExpirationDate = () => {
         formData.append('imageMap', imageMap)
         formData.append('inputBell', inputBell)
 
+
         fetch('./features/expirationDate/expirationDateRegistration.php', {
             method: 'POST',
             body: formData
         })
-            .then((response => response.text()))
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                } else if (response.status === 409) {
+                    audio("error")
+                    throw new Error('Conflito: NúmeroId já existe no banco de dados.');
+                } else {
+                    audio("error")
+                    throw new Error('Erro ao salvar: ' + response.status);
+                }
+            })
             .then(data => {
                 audio("sucesso")
-                    alert(data)
-                
-             
-                validade()
-
-
-
-
+                alert(data);
+                validade();
             })
             .catch(error => {
                 audio("error")
-                alert('Erro ao salvar', error)
-            })
+                alert('Erro ao salvar: ' + error.message);
+            });
+
+
 
     }
 
 
 }
-
-
-

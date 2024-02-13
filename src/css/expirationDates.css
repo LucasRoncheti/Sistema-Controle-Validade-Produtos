@@ -71,7 +71,7 @@
   padding: 3px;
   height: 25px;
   border: none;
-  width: 100%;
+  width: 90%;
   text-transform: uppercase;
 }
 
@@ -158,10 +158,9 @@
 }
 
 .containerInputs input {
-  width: 100%;
+  width: 90%;
   font-family: Roboto, "sans-serif";
   text-align: left;
-
 }
 
 .containerInputs:nth-child(1) {

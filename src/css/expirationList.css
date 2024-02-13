@@ -2,6 +2,7 @@
 .searchBar {
     width: 93.8%;
     max-width: 793px;
+    /* min-width: 700PX; */
     height: 80px;
     background-color: var(--cor07);
     display: flex;
@@ -11,6 +12,7 @@
     padding: 5px 2%;
     position: fixed;
     z-index: 4;
+    /* margin: auto; */
 }
 
 .searchContainer {
@@ -22,6 +24,8 @@
     align-items: center;
 
 }
+
+
 
 .containerForm {
     width: 50%;
@@ -78,6 +82,7 @@
     height: 100%;
     position: relative;
     border-radius: 5px;
+   
     overflow: hidden;
     cursor: pointer;
 }
@@ -270,5 +275,36 @@
 
 .containerSearchBarSaveListaValidade{
   position:absolute;
-  top:80px;
+  top: 80px;
+}
+
+
+@media screen and (max-width: 800px) {
+    .searchContainer{
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 100px;
+    }
+    .searchBar{
+        height: 150px;
+        width: 100%;
+        position: relative;
+    }
+
+    .quickSearch{
+        margin-top: 10px;
+        height: 80%;
+    }
+    .containerForm{
+        justify-content: center;
+        height: 70%;
+    }
+    .containerSearchBarSaveListaValidade{
+     
+        top: 147px;
+      }
+      .containerItens{
+        margin: 33px auto 5px auto;
+      }
 }

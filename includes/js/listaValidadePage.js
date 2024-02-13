@@ -5,8 +5,9 @@ var listaValidade = () => {
 
     mainContainer.innerHTML = `
     
-    <div class="searchBar">
+                <div class="searchBar">
                     <p>CONTROLE DE VALIDADE DOS PRODUTOS</p>
+
                     <div class="searchContainer">
                         <div class="containerForm">
                             <div class="formDate">
@@ -47,6 +48,8 @@ var listaValidade = () => {
 
             
                 </div>
+
+
 
                 <div  class="containerSearchBarSave containerSearchBarSaveListaValidade">
                     <div class=" green SearchIcon"><i class="bi bi-search"></i></div>
@@ -128,7 +131,7 @@ let orderListByDays = (days) => {
     switch (days) {
         case 1:
             date = "+60 days"
-          
+
             break;
         case 2:
             date = "+30 days"
@@ -138,7 +141,7 @@ let orderListByDays = (days) => {
             break;
         case 4:
             date = "0000-00-00"
-          
+
             break;
         default:
             alert("Invalid number of days.")
