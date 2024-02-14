@@ -131,3 +131,9 @@ footer{
 .displayNone{
     display: none;
 }
+
+@media screen and (max-width: 800px){
+    .displayNone{
+        display: none;
+    }
+}
