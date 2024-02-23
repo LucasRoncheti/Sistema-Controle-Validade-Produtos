@@ -99,11 +99,14 @@ listaValidade()
 
 
 
-
+   // Variável para controlar o temporizador quando clicar e segurar o mouse ou o dedo 
+   var timeout;
 
 // this function shows the popUp with the map and data of the selected product
 
 let popUpInfoProducts = (buyDate, selectFloor, inputRange, srcmapa) => {
+
+    clearTimeout(timeout);
 
     const containerMap = $('#containerInfoProducts')
     containerMap.html(`
@@ -115,6 +118,7 @@ let popUpInfoProducts = (buyDate, selectFloor, inputRange, srcmapa) => {
    
    `)
     containerMap.removeClass('displayNone')
+  
 
 }
 
@@ -128,8 +132,7 @@ let popUpInfoProductsClose = () => {
 
 ////////////////////////    FUNÇÕES QUE DELETAM A VALIDADE NA LISTA DE VALIDADE   ///////////////////////////////////////////////////////////
     
-    // Variável para controlar o temporizador
-    var timeout;
+ 
 
     // Função que será executada quando o mouse é pressionado sobre o elemento
     function mouseDownAction(element) {
