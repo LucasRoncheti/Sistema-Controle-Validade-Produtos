@@ -21,31 +21,32 @@
 
 
 .productsData{
-    width: 80%;
+    width: 95%;
     height: 140px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 20px;
 }
 
 
 .btn-quantidade-produtos-prateleira{
   position: absolute;
-  right: 10px;
-  top: 10px;
+  bottom: 10px;
+  /* top: 10px; */
   background-color: var(--cor03);
   border-radius: 5px;
   border: none;
-  width: auto;
-  height: 20px;
+  width: 200px;
+  height: 53px;
   padding: 8px;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-
   z-index: 30;
+  font-size: 1.4em;
 }
 .btn-quantidade-produtos-prateleira:hover{
   background-color: red;

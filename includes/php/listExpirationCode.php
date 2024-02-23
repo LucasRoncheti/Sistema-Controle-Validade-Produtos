@@ -36,7 +36,7 @@ $roundPositionMap = round($positionMap);
 $convertedDate = date('d/m/Y', strtotime($row['datavalidade']));
 $dataCompra = date('d/m/Y', strtotime($row['datacompra']));
 
-echo '    <li ontouchstart="touchStartAction(this)" ontouchend="touchEndAction()" onmousedown="mouseDownAction(this)" onclick="popUpInfoProducts(\'' . $dataCompra . '\',\'' . $row['andarPrateleira'] . '\',\'' . $roundPositionMap . '\',\'' . $row['srcmapa'] . '\')" class="item">';
+echo '    <li ontouchstart="touchStartAction(this,\'' . $row['nome'] . '\',\'' . $row['id'] . '\')" ontouchend="touchEndAction()" onmousedown="mouseDownAction(this,\'' . $row['nome'] . '\',\'' . $row['id'] . '\')" onclick="popUpInfoProducts(\'' . $dataCompra . '\',\'' . $row['andarPrateleira'] . '\',\'' . $roundPositionMap . '\',\'' . $row['srcmapa'] . '\')" class="item">';
 echo '        <div class="imgItem">';
 echo '            <img src="' . $row['src'] . '" alt="">';
 echo '        </div>';
@@ -49,4 +49,7 @@ echo '        <p class="quantityP">' . $row['quantidade'] . '</p>';
                 }else{
                     echo '        <div class="' . $tagColor . '"> ' . $diffInDays . ' Dias  </div>';
                 }
+echo '<input id='. $row['id'] .' type="hidden" value='. $row['id'] .'>' ;                     
 echo '    </li>';
+
+

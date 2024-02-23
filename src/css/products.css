@@ -25,9 +25,8 @@
 
 
 .formProducts{
-  width: 75%;
+  width: 69%;
   height: 90px;
-
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -44,6 +43,8 @@
   height: 25px;
   border:none;
   text-transform: uppercase;
+  border: solid 1px gray;
+  border-radius: 10px;
 }
 
 .saveProductButton{

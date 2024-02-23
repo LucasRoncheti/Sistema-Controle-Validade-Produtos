@@ -15,7 +15,7 @@ let validade = () => {
 
             <div class="productForm">
                 <label for="product">Nome do Produto</label>
-                <input id="productExpiration" name="product" type="text">
+                <input onclick="openList()" id="productExpiration" name="product" type="text" readonly>
             </div>
 
             <div class=" isExpirationForm">

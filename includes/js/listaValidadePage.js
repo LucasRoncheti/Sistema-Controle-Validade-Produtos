@@ -99,8 +99,8 @@ listaValidade()
 
 
 
-   // Variável para controlar o temporizador quando clicar e segurar o mouse ou o dedo 
-   var timeout;
+// Variável para controlar o temporizador quando clicar e segurar o mouse ou o dedo 
+var timeout;
 
 // this function shows the popUp with the map and data of the selected product
 
@@ -118,7 +118,7 @@ let popUpInfoProducts = (buyDate, selectFloor, inputRange, srcmapa) => {
    
    `)
     containerMap.removeClass('displayNone')
-  
+
 
 }
 
@@ -131,59 +131,97 @@ let popUpInfoProductsClose = () => {
 
 
 ////////////////////////    FUNÇÕES QUE DELETAM A VALIDADE NA LISTA DE VALIDADE   ///////////////////////////////////////////////////////////
-    
- 
 
-    // Função que será executada quando o mouse é pressionado sobre o elemento
-    function mouseDownAction(element) {
-        console.log('Mouse pressionado');
-        // Define um tempo para iniciar a ação após 500 milissegundos (0.5 segundos)
-        timeout = setTimeout(function () {
-            startAction(element); // Chama a função startAction após 500 milissegundos
-        }, 500);
+
+
+// Função que será executada quando o mouse é pressionado sobre o elemento
+function mouseDownAction(element, name, id) {
+
+
+    timeout = setTimeout(function () {
+
+        startAction(element, name, id);
+    }, 500);
+}
+
+
+function stopAction() {
+    console.log('Ação interrompida!');
+
+    clearTimeout(timeout);
+}
+
+
+///// código para a tela em touch /////////////////
+
+// Função que será executada quando o toque é iniciado sobre o elemento
+
+function touchStartAction(element, name, id) {
+
+
+    timeout = setTimeout(function () {
+
+        startAction(element, name, id);
+    }, 500);
+}
+
+
+
+// Função que será chamada quando o toque for interrompido antes do tempo definido
+function touchEndAction() {
+
+
+    clearTimeout(timeout);
+}
+
+
+
+function startAction(element, name, id) {
+
+
+
+    let resultado = confirm("Deseja apagar este item  " + name + "?");
+
+
+    if (resultado) {
+
+
+        fetch('./features/expirationDate/deleteZeroProductsList.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: id })
+        })
+            .then(response => response.text())
+            .then(data => {
+
+
+                alert('Item deletado com sucesso!')
+                listaValidade()
+
+
+
+            })
+            .catch(error => {
+                console.warn('Erro:', error.message)
+            });
+
+    } else {
+
+        listaValidade()
+
+
     }
 
-    // Função que será executada após o tempo definido em mouseDownAction
-    function startAction(element) {
-        console.log('Ação iniciada!');
-        // Coloque aqui o código da sua função
-        // Por exemplo, você pode alterar a cor de fundo do elemento:
-        element.style.backgroundColor = 'red';
-    }
 
-    // Função que será chamada quando o mouse for solto antes do tempo definido
-    function stopAction() {
-        console.log('Ação interrompida!');
-        // Limpa o temporizador se o mouse for solto antes do tempo definido
-        clearTimeout(timeout);
-    }
+}
 
 
- ///// código para a tela em touch 
 
-    // Função que será executada quando o toque é iniciado sobre o elemento
-    function touchStartAction(element) {
-        console.log('Toque iniciado');
-        // Define um tempo para iniciar a ação após 500 milissegundos (0.5 segundos)
-        timeout = setTimeout(function() {
-            startAction(element); // Chama a função startAction após 500 milissegundos
-        }, 500);
-    }
+// função com o pop up de deletar 
 
-    // Função que será executada após o tempo definido em touchStartAction
-    function startAction(element) {
-        console.log('Ação iniciada!');
-        // Coloque aqui o código da sua função
-        // Por exemplo, você pode alterar a cor de fundo do elemento:
-        element.style.backgroundColor = 'red';
-    }
+////////////////////////////////////////////////////////////////////////////////////////////
 
-    // Função que será chamada quando o toque for interrompido antes do tempo definido
-    function touchEndAction() {
-        console.log('Toque interrompido!');
-        // Limpa o temporizador se o toque for interrompido antes do tempo definido
-        clearTimeout(timeout);
-    }
+
 
 
 
